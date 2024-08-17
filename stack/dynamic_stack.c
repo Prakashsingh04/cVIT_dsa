@@ -11,10 +11,10 @@ SNODE * init(SNODE *S){
 SNODE *push(SNODE *S,int item){
 	 SNODE *newnode=(SNODE*)malloc(sizeof(struct node));
 	 newnode->data=item;
-	 if (S=NULL){
+	 if (S==NULL){
 	 	newnode->next=NULL;
-	 	S=newnode;
-	 }
+	 	newnode->next
+		 }
 	 else
 	 {
 	 	newnode->next=S;
@@ -32,7 +32,7 @@ SNODE *pop(SNODE *S){
 		S=S->next;
 		printf("\n%d is popped!!!\n",temp->data);
 		temp->next=NULL;
-		free(NULL);
+		free(temp);
 	}
 	return(S);
 }
@@ -49,17 +49,18 @@ int peek(SNODE *S)
 {
 	return (S->data);
 }
-void display(SNODE *S)
+int display(SNODE *S)
 {
 	SNODE *temp;
 	temp=S;
-	while(temp!=NULL){
-		printf("\n%d",temp->data);
+	while(temp!=NULL)
+	{
+		printf("%d\t",temp->data);
 		temp=temp->next;
 	}
 }
 void main(){
-	int n,ch;
+	int n,x,ch;
 	SNODE *S;
 	S=init(S);
 	do{
@@ -90,16 +91,13 @@ void main(){
 					if(!isEmpty(S))
 					{
 						n=peek(S);
-						printf("\npeak value=%d\n",S);
+						printf("\npeak value=%d\n",n);
 					}
 					else 
 					printf("\n!!stack underflow!!\n");
 					break;
 					
-					display(S);
-					break;
 			case 4:
-					
 					display(S);
 					break;
 			default:
