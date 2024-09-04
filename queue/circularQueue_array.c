@@ -7,7 +7,7 @@ int front=-1;
 int rear=-1;
 void enqueue(int x)
 {
-	if(front=(rear+1)%ARRAYSIZE)
+	if(rear==(rear+1)%ARRAYSIZE)
 	{
 		printf("\nqueue is full!!!");
 	}
@@ -15,7 +15,7 @@ void enqueue(int x)
 	{
 		rear=(rear+1)%ARRAYSIZE;
 		cqueue[rear]=x;
-		if(front=-1)
+		if(front==-1)
 		{
 			front=front+1;
 		}
@@ -29,7 +29,7 @@ void dequeue()
 	}	
 	else
 	{
-		printf("the dequeue element is %d",cqueue[front]);
+		printf("\nthe dequeue element is %d",cqueue[front]);
 		if(front==rear)
 		{
 			front=-1;
@@ -44,17 +44,20 @@ void dequeue()
 
 void display()
 {
-	int i;
+	int i=front;
 	if(front==-1 && rear==-1)
 	{
 		printf("!!queue is already empty nothing to display!!!");
 	}
 	else
 	{
-		for(i=front;i<=rear;i++)
+		while(i!=rear)
 		{
 			printf("%d\t",cqueue[i]);
+			i=(i+1)%ARRAYSIZE;
 		}
+		//last element
+		printf("%d\n",cqueue[rear]);
 	}
 }
 void main()
